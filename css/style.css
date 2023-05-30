@@ -166,7 +166,7 @@ header {
 /*================= CATEGORIES =============================*/
 .categories{
     background: #00246b;
-    height: 33rem;
+    min-height: 33rem;
 }
 
 .categories h1{
@@ -185,6 +185,10 @@ header {
 }
 .categories__left p {
     margin: 1rem 0 3rem;
+    color: white;
+}
+
+.categories__left h1 {
     color: white;
 }
 
@@ -276,6 +280,10 @@ header {
 .faqs {
     background: var(--color-bg1);
     box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.5);
+}
+
+.faqs h2 {
+    color: white;
 }
 
 .faqs__container {
