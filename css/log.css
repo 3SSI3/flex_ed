@@ -32,6 +32,10 @@ h2, small {
     text-align: center;
 }
 
+label {
+    font-weight: bold;
+}
+
 input, label {
     display: block;
 }

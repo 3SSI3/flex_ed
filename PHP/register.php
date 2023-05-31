@@ -11,22 +11,22 @@
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <h2>Register</h2>
         <label for="Firstname">Firstname</label>
-        <input type="text" name="firstname" required>
+        <input type="text" name="firstname" placeholder="Enter Firstname" required>
         
         <label for="Lastname">Lastname</label>
-        <input type="text" name="lastname" required>
+        <input type="text" name="lastname" placeholder="Enter Lastname" required>
 
         <label for="username">Username</label>
-        <input type="text" name="username" required>
+        <input type="text" name="username" placeholder="Enter Username"required>
 
         <label for="email">Email</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" placeholder="example@gmail.com" required>
 
         <label for="password">Password</label>
-        <input type="password" name="password" required>
+        <input type="password" name="password" placeholder="8 characters or more" required>
 
         <label for="confirm">Confirm Password</label>
-        <input type="password" name="confirm" required>
+        <input type="password" name="confirm" placeholder="re-enter password" required>
         
 
         <input type="submit" class="submit" value="Submit">
@@ -37,8 +37,36 @@
 </html>
 <?php
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        /*
-        TODO: add functionality to register user
-        */
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirm = $_POST['confirm'];
+
+        // tracks password confirmation
+        $match = false;
+
+        // tracks password length is right
+        $lengthCheck = false;
+
+        // check if confirmation of password was correct
+        if ($password === $confirm) {
+            $match = true;
+        }
+
+        if (strlen($password) >= 8) {
+            $lengthCheck = true;
+        }
+        
+        // save to csv if details are valid
+        if ($lengthCheck === $match) {
+            $csvFile = fopen('user.csv', 'a');
+            $data = [$firstname, $lastname, $username, $email, $password];
+
+            // write form data to csv
+            fputcsv($csvFile, $data);
+            fclose($csvFile);
+        }
     }
 ?>
