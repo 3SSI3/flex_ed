@@ -43,24 +43,9 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirm = $_POST['confirm'];
-
-        // tracks password confirmation
-        $match = false;
-
-        // tracks password length is right
-        $lengthCheck = false;
-
-        // check if confirmation of password was correct
-        if ($password === $confirm) {
-            $match = true;
-        }
-
-        if (strlen($password) >= 8) {
-            $lengthCheck = true;
-        }
         
         // save to csv if details are valid
-        if ($lengthCheck === $match) {
+        if (strlen($password) >= 8 && $password === $confirm) {
             $csvFile = fopen('user.csv', 'a');
             $data = [$firstname, $lastname, $username, $email, $password];
 
