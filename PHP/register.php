@@ -100,6 +100,18 @@ if (strlen($password) >= 8) {
 if ($lengthCheck === $match) {
     $csvFile = fopen('user.csv', 'a');
     $data = [$firstname, $lastname, $username, $email, $password];
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirm = $_POST['confirm'];
+        
+        // save to csv if details are valid
+        if (strlen($password) >= 8 && $password === $confirm) {
+            $csvFile = fopen('user.csv', 'a');
+            $data = [$firstname, $lastname, $username, $email, $password];
 
     // write form data to csv
     fputcsv($csvFile, $data);
