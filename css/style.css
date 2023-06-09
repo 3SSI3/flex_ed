@@ -96,7 +96,7 @@ img {
 }
 
 .button-primary {
-    background: var(--color-bg1);
+    background: var(--color-danger);
     color: var(--color-white);
 }
 
@@ -372,6 +372,8 @@ nav button {
         gap: 0;
     }
 }
+
+
 
 /*=============================MEDIA QUERIES (TABLETS)======================*/
 
