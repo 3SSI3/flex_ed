@@ -101,6 +101,11 @@ img {
 }
 
 /* ============== NAVBAR =================== */
+.logo {
+    color: var(--color-bg1);
+    font-size: 41px;
+    font-weight: 600;
+}
 nav {
     background: transparent;
     width: 100vw;
