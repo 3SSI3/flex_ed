@@ -31,12 +31,12 @@
         <h1>Log In</h1>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <div class="txt_field">
-            <input type="email" name="email" placeholder="example@gmail.com" autocomplete="true" required>
+            <input type="email" name="email" placeholder="example@gmail.com" autocomplete="true">
             <span></span>
             <label for="email">Email</label>
         </div>
         <div class="txt_field">
-            <input type="password" name="password" placeholder="your password" autocomplete="true" required>
+            <input type="password" name="password" placeholder="your password" autocomplete="true">
             <span></span>
             <label for="password">Password</label>
         </div>

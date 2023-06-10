@@ -32,36 +32,36 @@
         <h1>Register</h1>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
             <div class="txt_field">
-                <input type="text" name="firstname" placeholder="Enter Firstname" autocomplete="true" required>
+                <input type="text" name="firstname" placeholder="Enter Firstname" autocomplete="true">
                 <span></span>
                 <label for="Firstname">Firstname</label>
             </div>
             <div class="txt_field">
-                <input type="text" name="lastname" placeholder="Enter Lastname" autocomplete="true" required>
+                <input type="text" name="lastname" placeholder="Enter Lastname" autocomplete="true">
                 <span></span>
                 <label for="Lastname">Lastname</label>
             </div>
 
             <div class="txt_field">
-                <input type="text" name="username" placeholder="Enter Username" autocomplete="true" required>
+                <input type="text" name="username" placeholder="Enter Username" autocomplete="true">
                 <span></span>
                 <label for="Username">Username</label>
             </div>
 
             <div class="txt_field">
-                <input type="email" name="email" placeholder="example@gmail.com" autocomplete="true" required>
+                <input type="email" name="email" placeholder="example@gmail.com" autocomplete="true">
                 <span></span>
                 <label for="email">Email</label>
             </div>
             
             <div class="txt_field">
-                <input type="password" name="password" placeholder="8-characters or more" autocomplete="true" required>
+                <input type="password" name="password" placeholder="8-characters or more" autocomplete="true">
                 <span></span>
                 <label for="Password">Password</label>
             </div>
 
             <div class="txt_field">
-                <input type="password" name="password" placeholder="8-characters or more" autocomplete="true" required>
+                <input type="password" name="password" placeholder="8-characters or more" autocomplete="true">
                 <span></span>
                 <label for="Password">Confirm Password</label>
             </div>
@@ -97,7 +97,7 @@ if (strlen($password) >= 8) {
 }
 
 // save to csv if details are valid
-if ($lengthCheck === $match) {
+if ($lengthCheck === $match) {}
     $csvFile = fopen('user.csv', 'a');
     $data = [$firstname, $lastname, $username, $email, $password];
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -118,4 +118,4 @@ if ($lengthCheck === $match) {
     fclose($csvFile);
 }
 }
-?>
+}
