@@ -1,3 +1,6 @@
+<?php
+require('server.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,50 +32,21 @@
     <!--============================LOGIN FORM=========================================================-->
     <div class='center'>
         <h1>Log In</h1>
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
         <div class="txt_field">
-            <input type="email" name="email" placeholder="example@gmail.com" autocomplete="true">
+            <input type="email" name="email" placeholder="example@gmail.com" autocomplete="true" required>
             <span></span>
             <label for="email">Email</label>
         </div>
         <div class="txt_field">
-            <input type="password" name="password" placeholder="your password" autocomplete="true">
+            <input type="password" name="password" placeholder="your password" autocomplete="true" required>
             <span></span>
             <label for="password">Password</label>
         </div>
-        <input type="submit" class="submit" value="Submit">
+        <input type="submit" name="log_user" class="submit" value="Submit">
         
         <small>No Account? <a href="register.php">Register</a></small>
         </form>
     </div>
 </body>
 </html>
-<?php
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        // form data
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        //open csv file
-        $authenticated = false;
-
-        $csvFile = fopen('user.csv', 'r');
-        
-        while (($data = fgetcsv($csvFile)) !== False) {
-            $storedEmail = $data[3];
-            $storedPassword = $data[4];
-
-            // validate password entered in form
-            if ($email === $storedEmail && $password === $storedPassword) {
-                $authenticated = true;
-                break;
-            }
-        }
-
-        // check if user was authenticated
-        if ($authenticated) {
-            echo "Logged in";
-        } else {
-            echo "Invalid Login";
-        }
-    }
