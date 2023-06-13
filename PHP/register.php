@@ -1,3 +1,6 @@
+<?php
+require('server.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,92 +33,45 @@
   <!--============================LOGIN FORM=========================================================-->
     <div class='center'>
         <h1>Register</h1>
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
             <div class="txt_field">
-                <input type="text" name="firstname" placeholder="Enter Firstname" autocomplete="true">
+                <input type="text" name="firstname" placeholder="Enter Firstname" autocomplete="true" required>
                 <span></span>
                 <label for="Firstname">Firstname</label>
             </div>
             <div class="txt_field">
-                <input type="text" name="lastname" placeholder="Enter Lastname" autocomplete="true">
+                <input type="text" name="lastname" placeholder="Enter Lastname" autocomplete="true" required>
                 <span></span>
                 <label for="Lastname">Lastname</label>
             </div>
 
             <div class="txt_field">
-                <input type="text" name="username" placeholder="Enter Username" autocomplete="true">
+                <input type="text" name="username" placeholder="Enter Username" autocomplete="true" required>
                 <span></span>
                 <label for="Username">Username</label>
             </div>
 
             <div class="txt_field">
-                <input type="email" name="email" placeholder="example@gmail.com" autocomplete="true">
+                <input type="email" name="email" placeholder="example@gmail.com" autocomplete="true" required>
                 <span></span>
                 <label for="email">Email</label>
             </div>
             
             <div class="txt_field">
-                <input type="password" name="password" placeholder="8-characters or more" autocomplete="true">
+                <input type="password" name="password" placeholder="8-characters or more" autocomplete="true" required>
                 <span></span>
                 <label for="Password">Password</label>
             </div>
 
             <div class="txt_field">
-                <input type="password" name="password" placeholder="8-characters or more" autocomplete="true">
+                <input type="password" name="confirm" placeholder="8-characters or more" autocomplete="true" required>
                 <span></span>
                 <label for="Password">Confirm Password</label>
             </div>
 
-            <input type="submit" class="submit" value="Submit">
+            <input type="submit" name = "reg_user" class="submit" value="Submit">
             <small>Have an account? <a href="login.php">Login</a></small>
         </form>
     </div>
 </body>
 </html>
-<?php
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$username = $_POST['username'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$confirm = $_POST['confirm'];
-
-// tracks password confirmation
-$match = false;
-
-// tracks password length is right
-$lengthCheck = false;
-
-// check if confirmation of password was correct
-if ($password === $confirm) {
-    $match = true;
-}
-
-if (strlen($password) >= 8) {
-    $lengthCheck = true;
-}
-
-// save to csv if details are valid
-if ($lengthCheck === $match) {}
-    $csvFile = fopen('user.csv', 'a');
-    $data = [$firstname, $lastname, $username, $email, $password];
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $confirm = $_POST['confirm'];
-        
-        // save to csv if details are valid
-        if (strlen($password) >= 8 && $password === $confirm) {
-            $csvFile = fopen('user.csv', 'a');
-            $data = [$firstname, $lastname, $username, $email, $password];
-
-    // write form data to csv
-    fputcsv($csvFile, $data);
-    fclose($csvFile);
-}
-}
-}
