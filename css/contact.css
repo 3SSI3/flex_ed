@@ -55,7 +55,10 @@
 }
 
 .contact__socials a:hover {
-    background: purple;
+    background: rgb(57, 25, 57);
+}
+.contact__socials i:hover{
+    transform: translateY(-10px);
 }
 
 /*================== FORM ==================*/
